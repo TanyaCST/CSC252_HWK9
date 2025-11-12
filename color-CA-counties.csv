@@ -1,0 +1,277 @@
+Alameda,Contra Costa
+Alameda,San Joaquin
+Alameda,Stanislaus
+Alameda,Santa Clara
+Alameda,San Mateo
+Alpine,Mono
+Alpine,Tuolumne
+Alpine,Calaveras
+Alpine,Amador
+Alpine,El Dorado
+Amador,Calaveras
+Amador,Alpine
+Amador,El Dorado
+Amador,Sacramento
+Amador,San Joaquin
+Butte,Tehama
+Butte,Glenn
+Butte,Colusa
+Butte,Sutter
+Butte,Yuba
+Butte,Plumas
+Calaveras,Tuolumne
+Calaveras,Stanislaus
+Calaveras,San Joaquin
+Calaveras,Amador
+Calaveras,Alpine
+Colusa,Glenn
+Colusa,Lake
+Colusa,Yolo
+Colusa,Sutter
+Colusa,Butte
+Contra Costa,Solano
+Contra Costa,Sacramento
+Contra Costa,San Joaquin
+Contra Costa,Alameda
+Del Norte,Siskiyou
+Del Norte,Humboldt
+El Dorado,Placer
+El Dorado,Sacramento
+El Dorado,Amador
+El Dorado,Alpine
+Fresno,Mono
+Fresno,Inyo
+Fresno,Tulare
+Fresno,Kings
+Fresno,Monterey
+Fresno,San Benito
+Fresno,Merced
+Fresno,Madera
+Glenn,Tehama
+Glenn,Mendocino
+Glenn,Lake
+Glenn,Colusa
+Glenn,Butte
+Humboldt,Del Norte
+Humboldt,Siskiyou
+Humboldt,Trinity
+Humboldt,Mendocino
+Imperial,Riverside
+Imperial,San Diego
+Inyo,Mono
+Inyo,Fresno
+Inyo,Tulare
+Inyo,Kern
+Inyo,San Bernardino
+Kern,Inyo
+Kern,Tulare
+Kern,Kings
+Kern,Monterey
+Kern,San Luis Obispo
+Kern,Santa Barbara
+Kern,Ventura
+Kern,Los Angeles
+Kern,San Bernardino
+Kings,Tulare
+Kings,Fresno
+Kings,Monterey
+Kings,San Luis Obispo
+Kings,Kern
+Lake,Mendocino
+Lake,Sonoma
+Lake,Napa
+Lake,Yolo
+Lake,Colusa
+Lake,Glenn
+Lassen,Modoc
+Lassen,Shasta
+Lassen,Plumas
+Lassen,Sierra
+Los Angeles,Orange
+Los Angeles,San Bernardino
+Los Angeles,Ventura
+Los Angeles,Kern
+Madera,Mono
+Madera,Mariposa
+Madera,Merced
+Madera,Fresno
+Madera,Tuolumne
+Marin,Sonoma
+Mariposa,Tuolumne
+Mariposa,Madera
+Mariposa,Merced
+Mendocino,Humboldt
+Mendocino,Trinity
+Mendocino,Tehama
+Mendocino,Glenn
+Mendocino,Lake
+Mendocino,Sonoma
+Merced,Tuolumne
+Merced,Stanislaus
+Merced,Santa Clara
+Merced,San Benito
+Merced,Fresno
+Merced,Madera
+Merced,Mariposa
+Modoc,Siskiyou
+Modoc,Shasta
+Modoc,Lassen
+Mono,Alpine
+Mono,Tuolumne
+Mono,Mariposa
+Mono,Madera
+Mono,Fresno
+Mono,Inyo
+Monterey,San Luis Obispo
+Monterey,Kern
+Monterey,Fresno
+Monterey,San Benito
+Monterey,Santa Cruz
+Monterey,Kings
+Napa,Sonoma
+Napa,Lake
+Napa,Yolo
+Napa,Solano
+Nevada,Sierra
+Nevada,Yuba
+Nevada,Placer
+Orange,San Diego
+Orange,Riverside
+Orange,San Bernardino
+Orange,Los Angeles
+Placer,Nevada
+Placer,Yuba
+Placer,Sutter
+Placer,Sacramento
+Placer,El Dorado
+Plumas,Lassen
+Plumas,Shasta
+Plumas,Tehama
+Plumas,Butte
+Plumas,Sierra
+Plumas,Yuba
+Riverside,Imperial
+Riverside,San Diego
+Riverside,Orange
+Riverside,San Bernardino
+Sacramento,Sutter
+Sacramento,Yolo
+Sacramento,Solano
+Sacramento,Contra Costa
+Sacramento,San Joaquin
+Sacramento,Amador
+Sacramento,El Dorado
+Sacramento,Placer
+San Benito,Santa Clara
+San Benito,Merced
+San Benito,Fresno
+San Benito,Monterey
+San Benito,Santa Cruz
+San Bernardino,Riverside
+San Bernardino,Orange
+San Bernardino,Los Angeles
+San Bernardino,Kern
+San Bernardino,Inyo
+San Diego,Imperial
+San Diego,Riverside
+San Diego,Orange
+San Francisco,San Mateo
+San Joaquin,Sacramento
+San Joaquin,Contra Costa
+San Joaquin,Alameda
+San Joaquin,Stanislaus
+San Joaquin,Calaveras
+San Joaquin,Amador
+San Luis Obispo,Monterey
+San Luis Obispo,Kings
+San Luis Obispo,Kern
+San Luis Obispo,Santa Barbara
+San Mateo,San Francisco
+San Mateo,Santa Cruz
+San Mateo,Santa Clara
+San Mateo,Alameda
+Santa Barbara,San Luis Obispo
+Santa Barbara,Kern
+Santa Barbara,Ventura
+Santa Clara,San Benito
+Santa Clara,Merced
+Santa Clara,Stanislaus
+Santa Clara,Alameda
+Santa Clara,San Mateo
+Santa Clara,Santa Cruz
+Santa Cruz,Santa Clara
+Santa Cruz,San Mateo
+Santa Cruz,Monterey
+Santa Cruz,San Benito
+Shasta,Trinity
+Shasta,Siskiyou
+Shasta,Modoc
+Shasta,Lassen
+Shasta,Plumas
+Shasta,Tehama
+Sierra,Lassen
+Sierra,Plumas
+Sierra,Yuba
+Sierra,Nevada
+Siskiyou,Del Norte
+Siskiyou,Modoc
+Siskiyou,Humboldt
+Siskiyou,Trinity
+Siskiyou,Shasta
+Solano,Napa
+Solano,Yolo
+Solano,Sacramento
+Solano,Contra Costa
+Sonoma,Mendocino
+Sonoma,Lake
+Sonoma,Napa
+Sonoma,Marin
+Stanislaus,San Joaquin
+Stanislaus,Alameda
+Stanislaus,Santa Clara
+Stanislaus,Merced
+Stanislaus,Tuolumne
+Stanislaus,Calaveras
+Sutter,Butte
+Sutter,Colusa
+Sutter,Yolo
+Sutter,Sacramento
+Sutter,Placer
+Sutter,Yuba
+Tehama,Shasta
+Tehama,Trinity
+Tehama,Mendocino
+Tehama,Glenn
+Tehama,Butte
+Tehama,Plumas
+Trinity,Humboldt
+Trinity,Siskiyou
+Trinity,Shasta
+Trinity,Tehama
+Trinity,Mendocino
+Tulare,Inyo
+Tulare,Fresno
+Tulare,Kings
+Tulare,Kern
+Tuolumne,Alpine
+Tuolumne,Calaveras
+Tuolumne,Mariposa
+Tuolumne,Stanislaus
+Tuolumne,Merced
+Tuolumne,Mono
+Tuolumne,Madera
+Ventura,Los Angeles
+Ventura,Santa Barbara
+Ventura,Kern
+Yolo,Solano
+Yolo,Napa
+Yolo,Lake
+Yolo,Colusa
+Yolo,Sutter
+Yolo,Sacramento
+Yuba,Butte
+Yuba,Sutter
+Yuba,Placer
+Yuba,Nevada
+Yuba,Sierra
+Yuba,Plumas

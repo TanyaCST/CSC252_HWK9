@@ -1,0 +1,51 @@
+city,x_coord,y_coord,state
+boston,71.0589,42.3601,MA
+cinncinati,84.512,39.1031,OH
+new york city,74.006,40.7128,NY
+columbus,82.9988,39.9612,OH
+providence,71.4128,41.824,RI
+tucson,110.9742,32.254,AZ
+phoenix,112.074,33.4484,AZ
+salt lake city,111.891,40.7608,UT
+worcester,71.8023,42.2626,MA
+chicago,87.6298,41.8781,IL
+denver,104.9903,39.7392,CO
+seattle,122.3328,47.6061,WA
+san diego,117.1611,32.7157,CA
+los angeles,118.2426,34.0549,CA
+las vegas,115.1391,36.1716,NV
+boise,116.2023,43.615,ID
+detroit,83.0458,42.3314,MI
+baltimore,76.6122,39.2904,MD
+memphis,90.049,35.1495,TN
+indianapolis,86.1581,39.7684,ID
+lansing,84.5555,42.7325,MI
+new orleans,90.0715,29.9511,LA
+raleigh,78.6382,35.7796,NC
+san antonio,98.4946,29.4252,TX
+houston,95.3698,29.7604,TX
+nashville,86.7816,36.1627,TX
+oklahoma city,97.0929,35.0078,OK
+annapolis,76.4922,38.9784,MD
+portland,122.6784,45.5152,OR
+sacremento,121.4944,38.5816,CA
+miami,80.1918,25.7617,FL
+tampa,82.4588,27.9517,FL
+ohio city,81.7085,41.4875,OH
+cleveland,81.6944,41.4993,OH
+dallas,96.797,32.7767,TX
+austin,97.7431,30.2672,TX
+washington dc,77.0369,38.9072,
+pittsburgh,79.9959,40.4406,PA
+atlanta,84.3877,33.7488,GA
+trenton,74.7597,40.2206,NJ
+salem ,70.8955,42.5197,MA
+jacksonville,81.6557,30.3322,FL
+milwaukee,87.9065,43.0389,WI
+minneapolis,93.265,44.9778,MN
+portsmouth,70.7626,43.0718,NH
+charleston,79.9311,32.7765,SC
+manchester,71.4548,42.9956,NH
+Albuquerque,106.6504,35.0844,NM
+El Paso,106.485,31.7619,NM
+Santa Fe,105.9378,35.687,NM
