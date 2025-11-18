@@ -36,6 +36,9 @@ colors = ["red", "orange", "yellow", "green", "blue", "inidigo", "violet"] #chan
 
 # find the states with fewest neighbor
 
+# some extra question: we can either color it one by one based on neighbor 
+# or we can color it first and continue coloring its neighbor?
+
 # process it
 # check if neighbor is colored in colored_states:
 #   yes: color w/ different color; 
