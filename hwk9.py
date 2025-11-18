@@ -21,7 +21,25 @@ with open("color-US-states.csv", 'r') as f:
     
 print(states)
 
+
 #### First Greedy Strategy ####
 
 
 #### Second Greedy Strategy ####
+# Emily: start w/ fewer neighbors
+states_sets = set(states)
+colored_states = {state: "" for state in states.keys()}
+colors = ["red", "orange", "yellow", "green", "blue", "inidigo", "violet"] #change it to simple array
+
+
+# some thoughts
+
+# find the states with fewest neighbor
+
+# process it
+# check if neighbor is colored in colored_states:
+#   yes: color w/ different color; 
+#   how to find this different color? current thought: we have to go in order: double for loop?
+#   no/else: color it with the first color in list colors, update colored_states
+
+# remove from states_sets
