@@ -5,6 +5,7 @@
 #             https://www.geeksforgeeks.org/python/load-csv-data-into-list-and-dictionary-using-python/
 #             https://www.geeksforgeeks.org/python/sets-in-python/
 #             https://www.geeksforgeeks.org/python/python-set-methods/ (Eventually not used)
+#             https://www.geeksforgeeks.org/python/how-to-save-a-python-dictionary-to-a-csv-file/
 import csv
 
 
@@ -193,9 +194,20 @@ def strategy_1(states_1: dict[str, list[str]]) -> None:
             # Record that current state is colored
             colored = arr_append(colored, state)
 
-    # Print the result in a clear way.
-    for result in result_1.keys():
-        print(f"State: {result}, Color#: {result_1[result]}")
+    print("Map is colored. The result is stored as a csv file called map_coloring_strategy_1.csv")
+
+    # Store the result as a csv file
+    filename = "map_coloring_strategy_1.csv"
+    
+    category = ["states", "color"]
+
+    # Writing dictionary to CSV
+    with open(filename, mode='w', newline='') as file:
+        writer = csv.writer(file)
+        writer.writerow(category)
+        for k, v in result_1.items():
+            row = [k,v]
+            writer.writerow(row)
 
 
 #### Second Greedy Strategy ####
@@ -242,10 +254,20 @@ def color_fewest_neighbor(states: dict[str, list[str]]):
 
             states_sets.remove(fewest_key)
 
-    print(colored_states)
-        
-    for k,v in colored_states.items():
-        print("State:" + k + "," + "color:" + v)
+    print("Map is colored. The result is stored as a csv file called map_coloring_strategy_2.csv")
+
+    # Store the result as a csv file
+    filename = "map_coloring_strategy_2.csv"
+    
+    category = ["states", "color"]
+
+    # Writing dictionary to CSV
+    with open(filename, mode='w', newline='') as file:
+        writer = csv.writer(file)
+        writer.writerow(category)
+        for k, v in colored_states.items():
+            row = [k,v]
+            writer.writerow(row)
 
 def main():
     #### -------Tests for Strategy 1 -> Ensure all helper functions work -----####
