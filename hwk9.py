@@ -10,24 +10,24 @@ import csv
 
 ### First CSV file: US state ###
 
-states: dict[str, list[str]] = {}
+states: dict[str, str] = {}
 
 with open("color-US-states.csv", 'r') as f:
     dict_reader = csv.DictReader(f)
     for row in dict_reader:
         key = row["STATE"]
-        value = [n for n in row["NEIGHBORS"].split(',')] 
+        value = row["NEIGHBORS"]
         states[key] = value
     
 #print(states)
 
-# states_1: dict[str, list[str]] = {}
+states_1: dict[str, list[str]] = {}
 result_1: dict[str, int] = {} # Used to save states and their color
 
-# # Convert the value into a list of string
-# for key in states.keys():
-#     v_1 = states[key].split(", ") # Can we use split there for string? I assume not?
-#     states_1[key] = v_1
+# Convert the value into a list of string
+for key in states.keys():
+    v_1 = states[key].split(", ") 
+    states_1[key] = v_1
     
 
 #### First Greedy Strategy ####
@@ -225,9 +225,9 @@ def color_fewest_neighbor(states: dict[str, list[str]]):
             if num_neighbors < smallest_len:
                 smallest_len = num_neighbors
                 fewest_key = key
-            
+    
         if fewest_key is not None:
-            if states[fewest_key] == []: 
+            if states[fewest_key] == ['']: 
                 colored_states[fewest_key] = colors[0]
             else:
                 for color in colors:
@@ -242,8 +242,10 @@ def color_fewest_neighbor(states: dict[str, list[str]]):
 
             states_sets.remove(fewest_key)
 
-        for k,v in  colored_states:
-            print("State:" + k + "," + "color:" + v)
+    print(colored_states)
+        
+    for k,v in colored_states.items():
+        print("State:" + k + "," + "color:" + v)
 
 def main():
     #### -------Tests for Strategy 1 -> Ensure all helper functions work -----####
@@ -267,13 +269,14 @@ def main():
     # Desired output: [ "Missouri", "Wyoming", "Illinois", "Ohio", "California", "Alaska"]
     #                   8           6           6           5       3               0
     #### ------End of Tests for Strategy 1 ------------------------------------####
+    #print(states)
 
     print("Hello! Do you want to see a colored US map?")
-    choice = input("Which methods would you like to choose? type in 1/2")
+    choice = input("Which methods would you like to choose? type in 1/2\n")
     if choice == "1":
-        strategy_1(states)
+        strategy_1(states_1)
     elif choice == "2":
-        color_fewest_neighbor(states)
+        color_fewest_neighbor(states_1)
     else:
         print("Thank you!")
 
