@@ -9,23 +9,24 @@ import csv
 
 ### First CSV file: US state ###
 
-states: dict[str, str] = {}
+ dict[str, list[str]] = {}
 
 with open("color-US-states.csv", 'r') as f:
     dict_reader = csv.DictReader(f)
     for row in dict_reader:
         key = row["STATE"]
-        value = row["NEIGHBORS"]
+        value = [n for n in row["NEIGHBORS"].split(',')] 
         states[key] = value
     
+#print(states)
 
-states_1: dict[str, list[str]] = {}
+# states_1: dict[str, list[str]] = {}
 result_1: dict[str, int] = {} # Used to save states and their color
 
-# Convert the value into a list of string
-for key in states.keys():
-    v_1 = states[key].split(", ") # Can we use split there for string? I assume not?
-    states_1[key] = v_1
+# # Convert the value into a list of string
+# for key in states.keys():
+#     v_1 = states[key].split(", ") # Can we use split there for string? I assume not?
+#     states_1[key] = v_1
     
 
 #### First Greedy Strategy ####
@@ -197,6 +198,48 @@ def strategy_1(states_1: dict[str, list[str]]) -> None:
 
 
 #### Second Greedy Strategy ####
+    def color_fewest_neighbor(map: dict[str, list[str]]) -> dict[str,str]:
+    """This function colors the map with different color for adjacent areas by coloring the area with fewest neighbor first. 
+    BUT specifically the US states, because it has limited colors.
+    
+    param: (dict[str, list[str]]) map:
+
+    """
+    states_sets = set(states.keys())
+    colored_states = {state: "" for state in states.keys()}
+    colors = ["red", "orange", "yellow", "green", "blue", "indigo", "violet"] 
+    # it is actually terrible just having 7 colors of the rainbow defined
+    # because this code cannot generalize to other complicated maps 
+    # but I am only coloring the 50 states, so I want to use it :)
+
+    while states_sets:
+
+        fewest_key: str|None = None
+        smallest_len = float('inf')
+
+        for key in states_sets:
+            num_neighbors = len(states[key])
+            if num_neighbors < smallest_len:
+                smallest_len = num_neighbors
+                fewest_key = key
+        
+        if fewest_key is not None:
+            if states[fewest_key] == []: 
+                colored_states[fewest_key] = colors[0]
+            else:
+                for color in colors:
+                    conflict = False
+                    for neighbor in states[fewest_key]:
+                        if colored_states[neighbor] == color:
+                            conflict = True
+                            break
+                    if not conflict:
+                        colored_states[fewest_key] = color
+                        break
+
+            states_sets.remove(fewest_key)
+
+    return colored_states
 
 def main():
     #### -------Tests for Strategy 1 -> Ensure all helper functions work -----####
@@ -221,7 +264,7 @@ def main():
     #                   8           6           6           5       3               0
     #### ------End of Tests for Strategy 1 ------------------------------------####
 
-    strategy_1(states_1)
+    strategy_1(states)
 
 if __name__ == "__main__":
     main()
