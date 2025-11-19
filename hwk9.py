@@ -1,16 +1,13 @@
 # Name:       Tanya Chen, Emily Wang
-# Peers:      Maggie Hollis (CSC TA)
+# Peers:      N/A
 # References: Greedy Algotithm Lecture Note 
 #             https://docs.python.org/3/library/csv.html
 #             https://www.geeksforgeeks.org/python/load-csv-data-into-list-and-dictionary-using-python/
 #             https://www.geeksforgeeks.org/python/sets-in-python/
-#             https://www.geeksforgeeks.org/python/python-set-methods/
+#             https://www.geeksforgeeks.org/python/python-set-methods/ (Eventually not used)
 import csv
 
-# with open('color-US-states.csv') as US_map:
-#     map_reader = csv.reader(US_map, delimiter=' ', quotechar='|')
-#     for row in map_reader:
-#         pass
+### First CSV file: US state ###
 
 states: dict[str, str] = {}
 
@@ -21,26 +18,76 @@ with open("color-US-states.csv", 'r') as f:
         value = row["NEIGHBORS"]
         states[key] = value
     
-print(states)
+
+states_1: dict[str, list[str]] = {}
+result_1: dict[str, int] = {} # Used to save states and their color
+
+# Convert the value into a list of string
+for key in states.keys():
+    v_1 = states[key].split(", ") # Can we use split there for string? I assume not?
+    states_1[key] = v_1
+    
 
 #### First Greedy Strategy ####
 # Helper functions
-def arr_append():
-    pass
+def arr_append(arr: list[str], value: str) -> list[str]:
+    """Add given value to the end of the array
+    : param arr: (list[str]) The original array
+    : param value: (str) The value we want to add the the tail of arr
+    :return : (list[str]) A new array containing all the elements in arr and have value in its tail
 
-def arr_slice():
-    pass
+    >>> arr = ["a", "b"]
+    >>> print(arr_append(arr, "c"))
+    ["a", "b", "c"]
+    """
+    new_arr = [""]*(len(arr)+1)
+
+    i = 0
+
+    while i < len(arr):
+        new_arr[i] = arr[i]
+
+        i += 1
+
+    new_arr[i] = value
+
+    return new_arr
+
+def arr_slice(arr: list[str], start: int, end: int) -> list[str]:
+    """ Return a slice the given array from start to end (not inclusive)
+    : param arr: (list[str]) The original array
+    : param start: (int) The start index
+    : param end: (int) The end index (not included)
+    :return : (list[str]) A new array containing elements from arr[start] to arr[end-1]
+
+    >>> arr = ["a", "b", "c", "d", "e", "f", "g"]
+    >>> print(arr_slice(arr, 2,5))
+    ["c", "d", "e"]
+    """
+    new_arr = [""]*(end-start)
+
+    i = start
+    j = 0
+
+    while j < len(new_arr):
+        new_arr[j] = arr[i]
+        i += 1
+        j += 1
+
+    return new_arr
 
 def merge(states_1: dict[str, list[str]], left: list[str], right: list[str]) -> list[str]:
-    """ Merge 2 sorted lists in increasing order
-    : param left: (list[int]) A sorted list of integers (in ascending order)
-    : param right: (list[int]) A sorted list of integers (in ascending order)
+    """ It is not a generalized merge method
+    Merge 2 sorted lists of states in decreasing order based on the number of their neighbors
+    : param states_1: (dict[str, list[str]]) A dictionary used for referencing how many neighbors a state has
+    : param left: (list[str]) A sorted list of states (in descending order)
+    : param right: (list[str]) A sorted list of states (in descending order)
     :return : (list[int]) A list of integers that contains all elements in left and right and is sorted in ascending order
 
-    >>> l1 = [1,5,6]
-    >>> l2 = [2,3,4]
-    >>> print(merge(l1,l2))
-    [1,2,3,4,5,6]
+    >>> l1 = ["Utah","Nebraska","Massachusetts"]
+    >>> l2 = ["Arizona", "Mississippi", "Maine"]
+    >>> print(merge(states_1,l1,l2))
+    ['Utah', 'Nebraska', 'Arizona', 'Massachusetts', 'Mississippi', 'Maine']
     """
     merged:list[str] = []
     i = 0
@@ -49,54 +96,53 @@ def merge(states_1: dict[str, list[str]], left: list[str], right: list[str]) -> 
     while i < len(left) and j < len(right):
         # If number of values in the left is greater than the number of values in the right
         if len(states_1[left[i]]) > len(states_1[right[j]]):
-            merged.append(left[i])
+            merged = arr_append(merged, left[i])
             i+=1
         else:
-            merged.append(right[j])
+            merged = arr_append(merged, right[j])
             j+=1
 
     while i < len(left):
-        merged.append(left[i])
+        merged = arr_append(merged, left[i])
         i+=1
 
     while j < len(right):
-        merged.append(right[j])
+        merged = arr_append(merged, right[j])
         j+=1
 
     return merged
 
-def mergeSort(state_1: dict[str, list[str]], btList:list[str]) -> list[str]:
+def mergeSort(state_1: dict[str, list[str]], state_list:list[str]) -> list[str]:
     """Sort given list in an increasing order
-    : param btList: (list[int]) 
-    :return : (list[int])
+    : param states_1: (dict[str, list[str]]) A dictionary used for referencing how many neighbors a state has
+    : param state_list: (list[str]) An unsorted array of states
+    :return : (list[str]) A sorted array of states in descending order based on how many neighbors they have
 
-    >>> l1 = [5,1,6,4,2,3]
-    >>> print(mergeSort(l1))
-    [1,2,3,4,5,6]
+    >>> l3 = ["California", "Ohio", "Illinois", "Missouri", "Alaska", "Wyoming"]
+    >>> print(mergeSort(l3))
+    [ "Missouri", "Wyoming", "Illinois", "Ohio", "California", "Alaska"]
     """
     # Base Case: length of array is 1
-    if len(btList) == 1:
-        return btList
+    if len(state_list) == 1:
+        return state_list
     
-    mid = len(btList)//2
+    mid = len(state_list)//2
 
-    left = mergeSort(state_1, btList[0:mid])
-    right = mergeSort(state_1, btList[mid:])
+    slice_left = arr_slice(state_list, 0, mid)
+    slice_right = arr_slice(state_list, mid, len(state_list))
+
+    left = mergeSort(state_1, slice_left)
+    right = mergeSort(state_1, slice_right)
 
     return merge(state_1, left, right)
 
-def strategy_1(states: dict[str, str]):
-    states_1: dict[str, list[str]] = {}
-    result_1: dict[str, int] = {} # Used to save states and their color
-
-    # Convert the value into a list of string
-    for key in states.keys():
-        v_1 = states[key].split(", ") # Can we use split there for string? I assume not?
-        states_1[key] = v_1
-
+def strategy_1(states_1: dict[str, list[str]]) -> None:
+    """ Use a greedy algorithm to color the map. 
+        The local optimal solution in this strategy is to color the state which has the most neighbors first
+    :param states_1: (dict[str, list[str]])
+    """
     # Check the state with most neighbors first (highest length in value)
     # Sort the dictionary based on the number of neighbors (Use quick sort or merge sort)
-
     # Add all keys into a list
     len_key: int = len(states_1)
     state_list: list[str] = [""]*len_key
@@ -111,34 +157,71 @@ def strategy_1(states: dict[str, str]):
 
     # Start Coloring based on the state with highest
     # Define a set for colored states
-    colored:list[str] = []
+    colored:list[str] = [""]
 
     # Use for loop to loop through every state
-    for state in states_1.keys():
+    for state in state_list:
         # Use a set to store colors for neighbors
         neighbor_colors: set[int] = set()
 
         # Check whether current state is colored or not -> We only color states that do not have any color
         # If the current state is not colored, check whether its neighbors are colored
         if state not in colored:
-            # Find the color of neighbors
-            for neighbor in states_1[state]:
-                # pass through the neighbors not being colored
-                if neighbor in colored:
-                    neighbor_colors.add(result_1[neighbor])
+            # Check whether the current state has neighbor or not before adding neighbor colors
+            if states_1[state] == [""]:
+                result_1[state] = 1
+            else:
+                # Find the color of neighbors
+                for neighbor in states_1[state]:
+                    # pass through the neighbors not being colored
+                    if neighbor in colored:
+                        neighbor_colors.add(result_1[neighbor])
 
-            # Assign current state first available color 
-            # if the neighbors did not used up add colors in the set
-            color: int = 1
+                # Assign current state first available color 
+                # if the neighbors did not used up add colors in the set
+                color: int = 1
 
-            # Find first available color
-            while color in neighbor_colors:
-                color += 1
+                # Find first available color
+                while color in neighbor_colors:
+                    color += 1
 
-            # Assignment
-            result_1[state] = color
+                # Add state, color pair to result
+                result_1[state] = color
+
+            # Record that current state is colored
+            colored = arr_append(colored, state)
 
     # Print the result in a clear way.
+    for result in result_1.keys():
+        print(f"State: {result}, Color#: {result_1[result]}")
 
 
 #### Second Greedy Strategy ####
+
+def main():
+    #### -------Tests for Strategy 1 -> Ensure all helper functions work -----####
+    # print("---Test: arr_append---")
+    # arr = ["a", "b"]
+    # print(arr_append(arr, "c")) # Desired output ["a", "b", "c"]
+
+    # print("---Test: arr_slice---")
+    # arr = ["a", "b", "c", "d", "e", "f", "g"]
+    # print(arr_slice(arr, 2,5)) # Desired output ["c", "d", "e"]
+
+    # print("---Test: merge---")
+    # l1 = ["Utah","Nebraska","Massachusetts"]
+    # l2 = ["Arizona", "Mississippi", "Maine"]
+    # print(merge(states_1,l1,l2)) 
+    # Desired output: ['Utah', 'Nebraska', 'Arizona', 'Massachusetts', 'Mississippi', 'Maine']
+    #                   6       6           5           5               4               1
+
+    # l3 = ["California", "Ohio", "Illinois", "Missouri", "Alaska", "Wyoming"]
+    # print(mergeSort(states_1, l3))
+    # Desired output: [ "Missouri", "Wyoming", "Illinois", "Ohio", "California", "Alaska"]
+    #                   8           6           6           5       3               0
+    #### ------End of Tests for Strategy 1 ------------------------------------####
+
+    strategy_1(states_1)
+
+if __name__ == "__main__":
+    main()
