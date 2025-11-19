@@ -7,9 +7,10 @@
 #             https://www.geeksforgeeks.org/python/python-set-methods/ (Eventually not used)
 import csv
 
+
 ### First CSV file: US state ###
 
- dict[str, list[str]] = {}
+states: dict[str, list[str]] = {}
 
 with open("color-US-states.csv", 'r') as f:
     dict_reader = csv.DictReader(f)
@@ -198,12 +199,14 @@ def strategy_1(states_1: dict[str, list[str]]) -> None:
 
 
 #### Second Greedy Strategy ####
-    def color_fewest_neighbor(map: dict[str, list[str]]) -> dict[str,str]:
+def color_fewest_neighbor(states: dict[str, list[str]]):
     """This function colors the map with different color for adjacent areas by coloring the area with fewest neighbor first. 
-    BUT specifically the US states, because it has limited colors.
-    
-    param: (dict[str, list[str]]) map:
-
+        BUT specifically the US states, because it has limited colors.
+        
+    :param map (dict[str, list[str]]): A dictionary that contais all the areas
+    >>> map = {'Hawaii': ''}
+    >>> color_fewest_neighbor(map)
+    State: Hawaii, color: red
     """
     states_sets = set(states.keys())
     colored_states = {state: "" for state in states.keys()}
@@ -222,7 +225,7 @@ def strategy_1(states_1: dict[str, list[str]]) -> None:
             if num_neighbors < smallest_len:
                 smallest_len = num_neighbors
                 fewest_key = key
-        
+            
         if fewest_key is not None:
             if states[fewest_key] == []: 
                 colored_states[fewest_key] = colors[0]
@@ -230,7 +233,7 @@ def strategy_1(states_1: dict[str, list[str]]) -> None:
                 for color in colors:
                     conflict = False
                     for neighbor in states[fewest_key]:
-                        if colored_states[neighbor] == color:
+                        if colored_states.get(neighbor) == color:
                             conflict = True
                             break
                     if not conflict:
@@ -239,7 +242,8 @@ def strategy_1(states_1: dict[str, list[str]]) -> None:
 
             states_sets.remove(fewest_key)
 
-    return colored_states
+        for k,v in  colored_states:
+            print("State:" + k + "," + "color:" + v)
 
 def main():
     #### -------Tests for Strategy 1 -> Ensure all helper functions work -----####
@@ -264,7 +268,14 @@ def main():
     #                   8           6           6           5       3               0
     #### ------End of Tests for Strategy 1 ------------------------------------####
 
-    strategy_1(states)
+    print("Hello! Do you want to see a colored US map?")
+    choice = input("Which methods would you like to choose? type in 1/2")
+    if choice == "1":
+        strategy_1(states)
+    elif choice == "2":
+        color_fewest_neighbor(states)
+    else:
+        print("Thank you!")
 
 if __name__ == "__main__":
     main()
